@@ -15,7 +15,7 @@ spec:
         app: carrepair
     spec:
       containers:
-      - image: amedsamirebrahim/carrepair:v${BUILD_NUMBER}
+      - image: mohamedsamirebrahim/carrepair:v${BUILD_NUMBER}
         name: carrepair
         imagePullPolicy: Always
         ports:
