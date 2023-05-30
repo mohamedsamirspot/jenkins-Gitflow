@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: carrepair
+  name: carrepair
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: carrepair
+  template:
+    metadata:
+      labels:
+        app: carrepair
+    spec:
+      containers:
+      - image: amedsamirebrahim/carrepair:v${BUILD_NUMBER}
+        name: carrepair
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        resources: {}
