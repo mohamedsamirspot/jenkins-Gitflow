@@ -1,0 +1,18 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: myservice
+  name: myservice
+spec:
+  ports:
+  - name: carrepairport
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: carrepair
+  type: NodePort
+status:
+  loadBalancer: {}
