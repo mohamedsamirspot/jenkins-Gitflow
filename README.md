@@ -7,5 +7,5 @@ On each pipeline jenkins file, i build and push docker image from the current br
 ![z (1)](https://github.com/mohamedsamirspot/jenkins-Gitflow/assets/71722372/bf76b16e-fb25-4274-aeb9-4b137067e488)
 
 
-https://github.com/mohamedsamirspot/jenkins-Gitflow/assets/71722372/2f86b5c4-69a5-4379-9c8e-728bfb28d5b8
 
+Uploading el compressed.mp4…
