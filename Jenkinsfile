@@ -21,20 +21,18 @@ pipeline {
             steps {
                 echo 'deploy'
                 script {
-                    withCredentials([file(credentialsId: 'kubeconfig-for-my-slave', variable: 'MY_KUBECONFIG')]) {
-                        sh '''
-                            export BUILD_NUMBER=$(cat ../build.txt)
-                            mv Deployment/deploy.yaml Deployment/deploy.yaml.tmp
-                            cat Deployment/deploy.yaml.tmp | envsubst > Deployment/deploy.yaml
-                            rm -f Deployment/deploy.yaml.tmp
+                    sh '''
+                        export BUILD_NUMBER=$(cat ../build.txt)
+                        mv Deployment/deploy.yaml Deployment/deploy.yaml.tmp
+                        cat Deployment/deploy.yaml.tmp | envsubst > Deployment/deploy.yaml
+                        rm -f Deployment/deploy.yaml.tmp
 
-                            export BRANCH_NAME=$(cat ../branchname.txt)
-                            mv Deployment/deploy.yaml Deployment/deploy.yaml.tmp
-                            cat Deployment/deploy.yaml.tmp | envsubst > Deployment/deploy.yaml
-                            rm -f Deployment/deploy.yaml.tmp
-                            kubectl apply -f Deployment --kubeconfig ${MY_KUBECONFIG} -n ${BRANCH_NAME}
-                        '''
-                    }
+                        export BRANCH_NAME=$(cat ../branchname.txt)
+                        mv Deployment/deploy.yaml Deployment/deploy.yaml.tmp
+                        cat Deployment/deploy.yaml.tmp | envsubst > Deployment/deploy.yaml
+                        rm -f Deployment/deploy.yaml.tmp
+                        kubectl apply -f Deployment -n ${BRANCH_NAME}
+                    '''
                 }
             }
         }
